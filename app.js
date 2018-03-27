@@ -1,8 +1,12 @@
 let express = require('express');
 let app = express();
 
-app.get('/produtos', (req,res)=>{
-    res.send("<html><body><h1>Listagem de produtos</h1></body></html>");
+app.set('view engine','ejs');
+
+app.get("/produtos", (req, res) => {
+    res.render('produtos/lista');
 });
 
-app.listen(3000,()=> console.log("servidor rodando"));
+app.listen(3000, ()=>{
+    console.log("Servidor rodando");
+});

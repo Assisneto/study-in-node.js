@@ -9,6 +9,7 @@
   "author": "Assisneto",
   "license": "ISC",
   "dependencies": {
+    "ejs": "^2.5.8",
     "express": "^4.16.3"
   }
 }
