@@ -1,7 +1,4 @@
-let express = require('express');
-let app = express();
-
-app.set('view engine','ejs');
+let app = require ('./config/express')();
 
 app.get("/produtos", (req, res) => {
     console.log('Listando....')
