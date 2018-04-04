@@ -1,4 +1,4 @@
-let connection = require('../infra/dbconnection');
+let connection = require('../infra/connectionFactory');
 module.exports = (app)=>{ app.get("/produtos", (req, res) => {
     console.log('Listando....')
     
