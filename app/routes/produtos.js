@@ -2,11 +2,11 @@ let connection = require('../infra/dbconnection');
 module.exports = (app)=>{ app.get("/produtos", (req, res) => {
     console.log('Listando....')
     
-         connection.query('select * from produtos',function(err,results){
+         connection.query('select * from produtos',(err,results)=>{
             if (err){
                 console.log(err);
                 }
-            res.send(results);
+            res.render('produtos/lista',{listas:results});
         
         });
 

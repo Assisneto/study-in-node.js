@@ -3,12 +3,18 @@
         <table border="1px">
             <tr>
                 <td>Id</td>
-                <td>Nome</td>
+                <td>Titulo</td>
+                <td>Descrição</td>
+                <td>Preço</td>
             </tr>
-            <tr>
-                <td>1</td>
-                <td>Node.js e Express</td>
-            </tr>
+            <% listas.forEach(lista => {%>
+                <tr>
+                    <td><%= lista.id %></td>
+                    <td><%= lista.titulo %></td>
+                    <td><%= lista.preco %></td>
+                    <td><%= lista.descricao%></td>
+                </tr>
+            <% }); %>
         </table>
     </body>
 </html>
