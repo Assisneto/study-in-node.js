@@ -1,6 +1,6 @@
 let express = require('express');
 
-let express_load = require('express-load');
+let consign = require('consign');
 
 module.exports = ()=> {
     console.log("modulo esta sendo carregado");
@@ -10,8 +10,10 @@ module.exports = ()=> {
     app.set('view engine', 'ejs');
     app.set('views','./app/views');
 
-    express_load('routes', {cwd: 'app'})
-                .then('infra').into(app);
-    
+    consign({cwd:'app'})
+            .include('infra')
+            .then('routes')
+            .into(app);
+
     return app;
 }
