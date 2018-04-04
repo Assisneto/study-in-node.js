@@ -4,6 +4,4 @@ app.get("/produtos", (req, res) => {
     res.render('produtos/lista');
 });
 
-app.listen(3000, ()=>{
-    console.log("Servidor rodando");
-});
+app.listen(3000, ()=> console.log("Servidor rodando"));

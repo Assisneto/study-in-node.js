@@ -8,5 +8,5 @@ function createDBconnection(){
         });
 }
 
-module.exports = ()=> {return createDBconnection}
+module.exports = ()=> createDBconnection
 
