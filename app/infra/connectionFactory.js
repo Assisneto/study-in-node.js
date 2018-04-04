@@ -1,5 +1,6 @@
 let mysql = require('mysql');
 function createDBconnection(){
+    console.log('asdads');
     return mysql.createConnection({
             host : 'localhost',
             user : 'root',
