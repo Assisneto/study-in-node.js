@@ -1,8 +1,11 @@
 module.exports = ()=>{
-   return (connection)=>{ 
-        this.lista = (callback)=>{
-            connection.query('select * from produtos',callback);
-        }
-        return this;    
+  return produtosBanco;
+}
+class produtosBanco{
+    constructor(connection){
+        this.connection = connection;
+    }
+    lista(callback) {
+        return this.connection.query('select * from produtos',callback);
     }
 }
