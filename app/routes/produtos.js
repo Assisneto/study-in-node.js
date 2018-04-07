@@ -2,9 +2,9 @@ module.exports = (app)=>{ app.get("/produtos", (req, res) => {
     console.log('Listando....')
 
     let connection = app.infra.connectionFactory();
-    let produtosBanco = new app.infra.produtosBanco(connection);
+    let ProdutosBanco = new app.infra.ProdutosBanco(connection);
     
-    produtosBanco.lista((err,results)=>{
+    ProdutosBanco.lista((err,results)=>{
         if (err){
             console.log(err);
             }
