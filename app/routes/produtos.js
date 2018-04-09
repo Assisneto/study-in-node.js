@@ -26,7 +26,20 @@ module.exports = (app)=>{ app.get("/produtos", (req, res) => {
                 }
             res.redirect('/produtos');
             });
-            connection.end();
         });
+        app.get("/produtos/del",(req, res)=>{
+            res.render('produtos/del');
+        });
+        app.post("/produtos/del",(req,res)=>{
+            let produto = req.body;
+            console.log(produto);
+            ProdutosBanco.delete(produto,(err,results)=>{
+                if (err){
+                    console.log(err);
+                }
+                res.redirect('/produtos');
+            });
+        });
+       // connection.end();
     }); 
 }

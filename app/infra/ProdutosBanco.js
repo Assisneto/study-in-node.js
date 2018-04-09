@@ -11,4 +11,7 @@ class ProdutosBanco{
     salvar(produtos,callback){
         return this.connection.query('INSERT INTO produtos SET ?',produtos,callback);
     }
+    delete(id,callback){
+        return this.connection.query('DELETE from produtos WHERE id = (?)',[id.id],callback);
+    }
 }
