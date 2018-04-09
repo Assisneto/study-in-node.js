@@ -14,5 +14,8 @@ module.exports = (app)=>{ app.get("/produtos", (req, res) => {
 
     connection.end();
 
+    }); 
+    app.get("/produtos/form",(req, res) => {
+        res.render('produtos/form');
     });
 }
