@@ -8,4 +8,7 @@ class ProdutosBanco{
     lista(callback) {
         return this.connection.query('select * from produtos',callback);
     }
+    salvar(produtos,callback){
+        return this.connection.query('INSERT INTO produtos SET ?',produtos,callback);
+    }
 }
