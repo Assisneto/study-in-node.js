@@ -12,8 +12,8 @@ module.exports = ()=> {
     app.set('view engine', 'ejs');
     app.set('views','./app/views');
 
+    app.use(body_parser.json());
     app.use(body_parser.urlencoded({extended:true}));
-
     consign({cwd:'app'})
             .include('infra')
             .then('routes')
