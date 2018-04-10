@@ -8,7 +8,14 @@ module.exports = (app)=>{ app.get("/produtos", (req, res) => {
         if (err){
             console.log(err);
         }
-        res.render('produtos/lista',{listas:results});
+        res.format({
+            html : ()=>{
+                res.render('produtos/lista',{listas:results});
+            },
+            json : () =>{
+                res.json(results)
+                }
+        });
     });   
 
     app.get("/produtos/form",(req, res) => {
