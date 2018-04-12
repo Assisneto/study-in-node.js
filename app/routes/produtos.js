@@ -3,7 +3,7 @@ module.exports = (app)=>{ app.get("/produtos", (req, res) => {
     let ProdutosBanco = new app.infra.ProdutosBanco(connection);
     console.log('Listando....')
     
-    
+   
     ProdutosBanco.lista((err,results)=>{
         if (err){
             console.log(err);
@@ -23,8 +23,18 @@ module.exports = (app)=>{ app.get("/produtos", (req, res) => {
     });
 
     app.post("/produtos",(req, res)=>{
-        let produtos = req.body;
         
+        let produtos = req.body;
+      
+        let validadorTitulo = req.assert('titulo', 'Titulo deve ser preenchido');
+        validadorTitulo.notEmpty();
+
+        let err = req.validationErrors();
+        if(err){
+            res.render('produtos/form');
+            return;
+        }
+
         console.log(produtos);
         
         ProdutosBanco.salvar(produtos,(err,results)=>{
