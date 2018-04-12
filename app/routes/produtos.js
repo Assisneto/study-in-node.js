@@ -19,7 +19,7 @@ module.exports = (app)=>{ app.get("/produtos", (req, res) => {
     });   
 
     app.get("/produtos/form",(req, res) => {
-        res.render('produtos/form',{validadorErros:[]});
+        res.render('produtos/form',{validadorErros:[], produtos:[]});
     });
 
     app.post("/produtos",(req, res)=>{
@@ -28,11 +28,11 @@ module.exports = (app)=>{ app.get("/produtos", (req, res) => {
       
         req.assert('titulo', 'Titulo deve ser preenchido').notEmpty();
         req.assert('preco',"Digite um preço validao").isFloat();
-        
+        req.assert('descricao', 'Digite uma descrição').notEmpty(); 
         let err = req.validationErrors();
         console.log(`erro:${err}`)
         if(err){
-            res.render('produtos/form',{validadorErros : err});
+            res.render('produtos/form',{validadorErros : err, produtos:produtos});
             return;
         }
 
