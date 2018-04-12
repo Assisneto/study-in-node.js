@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html>
     <body>
+        <div class="erros">
+             <%if(validadorErros){  %>
+                <% validadorErros.forEach(erros =>{%>
+                    <li>
+                        <%= erros.param %> - <%= erros.msg %>
+                    </li>
+        
+                 <%}); %>
+        <%}%>
+        </div>
         <form action="/produtos" method="post">
             <div>
                 <label for="titulo">Título</label>
