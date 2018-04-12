@@ -1,20 +1,21 @@
-module.exports = (app)=>{ app.get("/produtos", (req, res) => {
+module.exports = (app)=>{
     let connection = app.infra.connectionFactory();
     let ProdutosBanco = new app.infra.ProdutosBanco(connection);
     console.log('Listando....')
     
-   
-    ProdutosBanco.lista((err,results)=>{
-        if (err){
-            console.log(err);
-        }
-        res.format({
-            html : ()=>{
-                res.render('produtos/lista',{listas:results});
-            },
-            json : () =>{
-                res.json(results)
-                }
+    app.get("/produtos", (req, res) => {
+        ProdutosBanco.lista((err,results)=>{
+            if (err){
+                console.log(err);
+            }
+            res.format({
+                html : ()=>{
+                    res.render('produtos/lista',{listas:results});
+                },
+                json : () =>{
+                    res.json(results)
+                    }
+            });
         });
     });   
 
@@ -32,7 +33,13 @@ module.exports = (app)=>{ app.get("/produtos", (req, res) => {
         let err = req.validationErrors();
         console.log(`erro:${err}`)
         if(err){
-            res.render('produtos/form',{validadorErros : err, produtos:produtos});
+            res.format({
+                html : ()=>{
+                    res.status(400).render('produtos/form',{validadorErros : err, produtos:produtos});                },
+                json : () =>{
+                    res.status(400).json(err)
+                    }
+            });
             return;
         }
 
@@ -59,5 +66,4 @@ module.exports = (app)=>{ app.get("/produtos", (req, res) => {
             });
         });
        // connection.end();
-    }); 
-}
+    }

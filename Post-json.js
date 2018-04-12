@@ -19,7 +19,7 @@ let client = http.request(configuracoes,(res)=>{
 });
 
 let produtos = {
-    titulo : "n",
+    titulo : "",
     descricao : "node",
     preco : 100
 };
