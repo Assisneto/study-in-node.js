@@ -19,6 +19,7 @@
     "package.json": "^2.0.1"
   },
   "devDependencies": {
-    "mocha": "^5.0.5"
+    "mocha": "^5.0.5",
+    "supertest": "^3.0.0"
   }
 }
