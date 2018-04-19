@@ -31,7 +31,7 @@ module.exports = (app)=>{
         req.assert('preco',"Digite um preço validao").isFloat();
         req.assert('descricao', 'Digite uma descrição').notEmpty(); 
         let err = req.validationErrors();
-        console.log(`erro:${err}`)
+        //console.log(`erro:${err}`)
         if(err){
             res.format({
                 html : ()=>{
