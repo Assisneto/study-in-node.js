@@ -3,10 +3,11 @@ module.exports = (app)=>{
     let ProdutosBanco = new app.infra.ProdutosBanco(connection);
     console.log('Listando....')
     
-    app.get("/produtos", (req, res) => {
+    app.get("/produtos", (req, res,next) => {
         ProdutosBanco.lista((err,results)=>{
             if (err){
                 console.log(err);
+                return next(err);
             }
             res.format({
                 html : ()=>{

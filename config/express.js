@@ -10,6 +10,7 @@ module.exports = ()=> {
     console.log("modulo esta sendo carregado");
     
     let app = express();
+    app.use(express.static('./app/public'));
 
     app.set('view engine', 'ejs');
     app.set('views','./app/views');
