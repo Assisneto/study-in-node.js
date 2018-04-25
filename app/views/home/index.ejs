@@ -248,12 +248,12 @@
         </div>
     </div>
 </footer>
-</body>
-</html>
 <script src="/socket.io/socket.io.js"></script>
 <script>
-    var socket = io();
-    socket.on('novaPromocao', function (data) {
+    let socket = io();
+    socket.on('novaPromocao', (data) => {
         alert(data.livro.id);
     });
 </script>
+</body>
+</html>

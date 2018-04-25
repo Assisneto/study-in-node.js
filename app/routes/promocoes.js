@@ -13,7 +13,7 @@ module.exports =(app) => {
 
     app.post("/promocoes", (req,res) => {
         var promocao = req.body;
-        console.log(promocao);
+        app.get('io').emit("novaPromocao",promocao);
 
         res.redirect("/promocoes/form");
     });
