@@ -250,3 +250,10 @@
 </footer>
 </body>
 </html>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+    var socket = io();
+    socket.on('novaPromocao', function (data) {
+        alert(data.livro.id);
+    });
+</script>
